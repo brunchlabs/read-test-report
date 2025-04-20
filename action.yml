@@ -1,5 +1,10 @@
 name: Read Test Report
-description: Reads the CTRF report from a fixed path and sets its content as output
+description: Reads the CTRF report from a specified path or a default path and sets its content as output
+inputs:
+  path:
+    description: 'Optional path to the CTRF report file'
+    required: false
+    default: 'ctrf/ctrf-report.json'
 outputs:
   content:
     description: The contents of the CTRF report
@@ -11,6 +16,7 @@ runs:
       id: read-report
       shell: bash
       run: |
+        REPORT_PATH="${{ inputs.path }}"
         echo "content<<EOF" >> $GITHUB_OUTPUT
-        cat ctrf/ctrf-report.json >> $GITHUB_OUTPUT
+        cat "$REPORT_PATH" >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
