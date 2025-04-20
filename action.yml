@@ -1,0 +1,14 @@
+name: Read Test Report
+description: Reads the CTRF report from a fixed path and sets its content as output
+outputs:
+  content:
+    description: The contents of the CTRF report
+runs:
+  using: 'composite'
+  steps:
+    - name: Read CTRF report file
+      shell: bash
+      run: |
+        echo "content<<EOF" >> $GITHUB_OUTPUT
+        cat ctrf/ctrf-report.json >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
