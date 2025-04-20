@@ -12,3 +12,9 @@ runs:
         echo "content<<EOF" >> $GITHUB_OUTPUT
         cat ctrf/ctrf-report.json >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
+
+    - name: Print CTRF report
+      shell: bash
+      run: |
+        echo "CTRF report:"
+        cat $GITHUB_OUTPUT
