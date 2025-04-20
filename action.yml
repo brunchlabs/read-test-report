@@ -16,5 +16,5 @@ runs:
     - name: Print CTRF report
       shell: bash
       run: |
-        echo "CTRF report:"
+        echo "CTRF report: "
         cat $GITHUB_OUTPUT
